@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <context:property-placeholder location="classpath:coach.properties"/>
+  
+  <context:component-scan base-package="com.base.spring.componentscanning" />
+  
+  <bean id="myFortune" class="com.base.spring.fortuneservice.BadFortuneService">
+  </bean>
+  
+  <bean id="myAlternateFortune" class="com.base.spring.fortuneservice.HappyFortuneService">
+  </bean>
+  
+  <bean id="myCoach" class="com.base.spring.coach.FootballCoach" scope="singleton"
+  		init-method="startupBeanCode" destroy-method="doShutDownBeanCode" lazy-init="true">
+  	<constructor-arg ref="myFortune" />
+  	<property name="alternateFortune" ref="myAlternateFortune" />
+  	<property name="emailAddress" value="${coach.email}" />
+  	<property name="name" value="Rudra Mishra" />
+  </bean>
+
+</beans>
