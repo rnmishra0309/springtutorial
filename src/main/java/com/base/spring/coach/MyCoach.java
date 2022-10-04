@@ -9,7 +9,7 @@ public class MyCoach {
 	static final Logger logger = LogManager.getLogger(MyCoach.class);
 	
 	public static void main(String[] args) {
-		// This is if spring doesnt exists.
+		// This is if spring doesn't exist.
 		// Coach coach = new BaseBallCoach();
 		// coach.getDailyActivity();
 		
@@ -20,6 +20,7 @@ public class MyCoach {
 		Coach myCoach = context.getBean("myCoach", Coach.class);
 		// Use the beans
 		myCoach.getDailyActivity();
+		logger.info("Completed.");
 		// close the context
 		context.close();
 	}
