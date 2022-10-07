@@ -13,6 +13,7 @@ public class MainClass {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 		
 		Car bentley = context.getBean("bentley", Car.class);
+		Engine typeD = context.getBean("engineTypeD", Engine.class);
 		
 		logger.info(bentley.getBrandName());
 		logger.info(bentley.getRunningStatus());
@@ -22,6 +23,8 @@ public class MainClass {
 		logger.info(mercedes.getBrandName());
 		logger.info(mercedes.getRunningStatus());
 		logger.info(mercedes.getEngine());
+
+		logger.info(typeD.getEngineType());
 		
 		context.close();
 		
